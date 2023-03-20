@@ -57,9 +57,15 @@ public class App {
             String line;
             int i = 1;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                wordleDatabaseConnection.addValidWord(i, line);
-                i++;
+                System.out.print(line);
+                if (Pattern.matches("[a-z]{4}", line)) {
+                    wordleDatabaseConnection.addValidWord(i, line);
+                    i++;
+                    System.out.println();
+                } else {
+                    System.out.print(" Line Ignored");
+                    System.out.println();
+                }
             }
 
         } catch (IOException e) {
